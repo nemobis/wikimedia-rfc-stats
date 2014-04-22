@@ -300,7 +300,10 @@ class VotePage:
                 continue
             for line in self.get_vote_lines(section_id):
                 i += 1
-                yield Vote.from_line(self, line, section_label)
+                try:
+                    yield Vote.from_line(self, line, section_label)
+                except:
+                    pass
                 if i == limit:
                     return
 
